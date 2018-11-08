@@ -17,7 +17,9 @@
           "screens": "./app/screens",
           "config": "./app/config",
           "kernel": "./app/kernel",
-          "store": "./app/store"
+          "store": "./app/store",
+          "assets": "./app/assets",
+          "images": "./app/assets/images",
         }
       }
     ]

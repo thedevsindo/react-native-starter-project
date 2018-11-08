@@ -1,9 +1,11 @@
-import location from './location'
-import satellite from './satellite'
+import Location from './Location'
+import Satellite from './Satellite'
 import NavigationActions from './NavigationActions'
+import Appearance from './Appearance'
 
 export {
-    location,
-    NavigationActions,
-    satellite
+  Appearance,
+  Location,
+  NavigationActions,
+  Satellite
 }
