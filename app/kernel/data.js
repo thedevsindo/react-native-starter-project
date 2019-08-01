@@ -1,24 +1,25 @@
 import { applyMiddleware, createStore } from 'redux'
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
 
 import thunk from 'redux-thunk'
-import { navMiddleware } from 'kernel/router'
+import logger from 'redux-logger'
+import { navMiddleware } from './router'
+import authMiddleware from '@kernel/middleware/authMiddleware'
+import persistMiddleware from '@kernel/middleware/persistMiddleware'
+import activityMiddleware from '@kernel/middleware/activityMiddleware'
+import { LocalStorage, Application, AwesomeAlert } from '@utils'
 
-import reducers from 'store'
+import reducers from '@store'
 
-const persistConfig = {
-  key: 'helpmedong',
-  storage,
-  blacklist: ['navData']
-}
+const middlewares = [
+  thunk, __DEV__ && logger, navMiddleware, authMiddleware, persistMiddleware, activityMiddleware
+].filter(Boolean)
 
-const reducer = persistReducer(persistConfig, reducers)
-
-const store = createStore(reducer, applyMiddleware(thunk, navMiddleware))
-const persistor = persistStore(store)
+const persistedReducer = LocalStorage.persistReducer({}, reducers)
+const store = createStore(persistedReducer, applyMiddleware(...middlewares))
+const persistor = LocalStorage.persistStore(store)
+Application.registerStore(store)
+AwesomeAlert.registerStore(store)
 
 export default {
-  store,
-  persistor
+  store, persistor
 }
