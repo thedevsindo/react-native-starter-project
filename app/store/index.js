@@ -1,11 +1,17 @@
 import { combineReducers } from 'redux'
-import { navData } from '../kernel/router'
+import { navData } from '@kernel/router'
 
-import authData from './authData'
+import awesomeAlertData from '@store/awesomeAlertData'
+import authData from '@store/authData'
+import connectionData from '@store/connectionData'
+import browserData from '@store/browserData'
 
 const reducer = combineReducers({
-    authData: authData,
-    navData: navData
+  connectionData: connectionData,
+  awesomeAlertData: awesomeAlertData,
+  authData: authData,
+  navData: navData,
+  browserData: browserData
 })
 
-export default reducer
+module.exports = reducer
