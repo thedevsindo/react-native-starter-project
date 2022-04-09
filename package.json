@@ -18,7 +18,7 @@
     "events": "^3.0.0",
     "immutability-helper": "^3.0.1",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "16.8.6",
     "react-native": "0.60.4",
     "react-native-easy-toast": "^1.2.0",
